@@ -15,10 +15,6 @@ import app.akexorcist.bluetotohspp.library.BluetoothSPP.BluetoothStateListener
 import app.akexorcist.bluetotohspp.library.BluetoothSPP.AutoConnectionListener
 
 
-
-
-
-
 class MainActivity : AppCompatActivity() {
 
     val bt = BluetoothSPP(this)
@@ -45,8 +41,10 @@ class MainActivity : AppCompatActivity() {
         bt.setOnDataReceivedListener (object : BluetoothSPP.OnDataReceivedListener{
             override fun onDataReceived(data: ByteArray?, message: String?) {
                 Log.e("message", message)
+                var msg : Int = Integer.parseInt(message)
                 val tmp = view.getText().toString()
-                view.setText(tmp+message)
+                var mes : Char = msg.toChar()
+                view.setText(tmp+mes)
             }
         })
 
